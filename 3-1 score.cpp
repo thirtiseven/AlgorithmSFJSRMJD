@@ -1,23 +1,24 @@
 #include <iostream>
-#include <stdio.h>
+#include <cstring>
 
-using namespace std;
 int main(int argc, char *argv[]) {
-	char s[80];
-	scanf("%s",s);
-	int sum = 0;
-	int comb = 1;
-	for(int i = 0;i < 80;i++){
-		if(s[i] == 'X'){
-			comb = 1;
+	char s[85];
+	int n,sum,comb,len;
+	std::cin >> n;
+	while(n--){
+		std::cin >> s;
+		sum = 0;
+		comb = 0;
+		len = strlen(s);
+		for(int i = 0;i < len;i++){
+			if(s[i] == 'X'){
+				comb = 0;
+			}
+			if(s[i] == 'O'){
+				comb++;
+				sum += comb;
+			}
 		}
-		if(s[i] == 'O'){
-			sum += comb;
-			comb++;
-		}
-		if(s[i] == ' '){
-			break;
-		}
+		std::cout << sum << std::endl;
 	}
-	printf("%d",sum);
 }
